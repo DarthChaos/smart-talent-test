@@ -6,6 +6,7 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./layouts/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/flowbite-react/**/*.js",
   ],
   safelist: [
     "w-64",
