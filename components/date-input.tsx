@@ -40,6 +40,7 @@ const DateInput = ({
         onChange={onDateChange}
         className={dateClassName}
         placeholderText={placeholder}
+        wrapperClassName='w-full'
       />
     </div>
   );

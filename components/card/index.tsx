@@ -60,7 +60,7 @@ const Card = ({
   );
 
   return (
-    <div className='max-w-sm bg-white border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 transform duration-200 hover:scale-110 rounded-md overflow-hidden'>
+    <div className='max-w-xs bg-white border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 transform duration-200 hover:scale-110 rounded-md overflow-hidden'>
       <a href='#'>
         <Image {...{ alt, src }} width={1000} height={1000} />
       </a>
@@ -90,9 +90,9 @@ const Card = ({
           >
             <path
               stroke='currentColor'
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              stroke-width='2'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='2'
               d='M1 5h12m0 0L9 1m4 4L9 9'
             />
           </svg>
