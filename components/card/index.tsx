@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import CardDescriptiveSection from "./card-desc-section";
+import Link from "next/link";
+import LightLink from "../light-link";
 
 const Card = ({
   alt = "",
@@ -13,7 +15,7 @@ const Card = ({
   taxes,
 }: CardProps) => {
   const buttonClassName =
-    "items-center mt-4 px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 " +
+    "items-center mt-4 px-3 py-2 text-sm font-medium text-center text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800 " +
     (hasButton ? "inline-flex" : "hidden");
   const priceImg = (
     <svg
@@ -58,11 +60,11 @@ const Card = ({
   );
 
   return (
-    <div className='max-w-sm bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700'>
+    <div className='max-w-sm bg-white border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 transform duration-200 hover:scale-110 rounded-md overflow-hidden'>
       <a href='#'>
         <Image {...{ alt, src }} width={1000} height={1000} />
       </a>
-      <div className='p-5 text-gray-900'>
+      <div className='p-5 text-gray-900 dark:text-white'>
         <div className='flex justify-between'>
           <CardDescriptiveSection img={priceImg} title='Price' value={price} />
           <CardDescriptiveSection img={taxesImg} title='Taxes' value={taxes} />
@@ -77,7 +79,7 @@ const Card = ({
             {title}
           </h5>
         </a>
-        <a href='#' className={buttonClassName}>
+        <LightLink className={buttonClassName}>
           {buttonLabel}
           <svg
             className='rtl:rotate-180 w-3.5 h-3.5 ms-2'
@@ -94,7 +96,7 @@ const Card = ({
               d='M1 5h12m0 0L9 1m4 4L9 9'
             />
           </svg>
-        </a>
+        </LightLink>
       </div>
     </div>
   );

@@ -13,6 +13,10 @@ const DateInput = ({
 }: DateInputProps) => {
   const [startDate, setStartDate] = useState(initialValue);
 
+  const dateClassName =
+    "border border-t-0 border-l-0 border-r-0 border-gray-300 text-gray-900 text-sm focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 " +
+    className;
+
   const onDateChange = (date: Date) => {
     onChange(date);
     setStartDate(date);
@@ -20,9 +24,9 @@ const DateInput = ({
 
   return (
     <div className='relative max-w-sm'>
-      <div className='absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none'>
+      <div className='absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none z-20'>
         <svg
-          className='w-4 h-4 text-gray-800 dark:text-white z-20'
+          className='w-4 h-4 text-gray-800 dark:text-white my-auto'
           aria-hidden='true'
           xmlns='http://www.w3.org/2000/svg'
           fill='currentColor'
@@ -34,7 +38,7 @@ const DateInput = ({
       <DatePicker
         selected={startDate}
         onChange={onDateChange}
-        className='border border-t-0 border-l-0 border-r-0 border-gray-300 text-gray-900 text-sm focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+        className={dateClassName}
         placeholderText={placeholder}
       />
     </div>
