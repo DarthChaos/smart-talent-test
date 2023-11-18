@@ -7,7 +7,7 @@ const HeaderItem = ({ name, path }: HeaderItemProps) => {
   const actualPath = usePathname().split("/")[1];
 
   const className =
-    "inline-block p-4 w-full text-center border-b-2 border-transparent rounded-t-lg text-gray-500 hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 [&.active]:text-blue-600 [&.active]:border-blue-600 [&.active]:dark:text-blue-500 [&.active]:dark:border-blue-500 " +
+    "inline-block p-4 w-full text-center border-b-2 border-transparent rounded-t-lg text-gray-800 dark:text-white hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 [&.active]:text-blue-600 [&.active]:border-blue-600 [&.active]:dark:text-blue-500 [&.active]:dark:border-blue-500 " +
     ("/" + actualPath === path ? "active" : "");
 
   return (

@@ -1,5 +1,6 @@
 import Card from "@/components/card";
 import CheckAvailability from "@/components/check-availability";
+import LightLink from "@/components/light-link";
 import { Heading1 } from "@/components/text";
 import Image from "next/image";
 import Link from "next/link";
@@ -34,18 +35,15 @@ export default function Home() {
   ];
 
   return (
-    <main className='flex min-h-screen flex-col items-center gap-y-5'>
+    <div className='flex flex-col items-center gap-y-5'>
       <div className='relative pt-10 px-4 xl:px-28 pb-3 mx-auto my-0 flex flex-wrap items-center xl:justify-between'>
         <div className='flex flex-col xl:max-w-[50%]'>
           <Heading1 className='text-center xl:text-left'>
             Welcome to the Smart Talent Hotel
           </Heading1>
-          <Link
-            href='#'
-            className='px-5 py-4 bg-blue-500 mt-3 mx-auto xl:ml-0 underline'
-          >
+          <LightLink className='mt-3 mx-auto xl:ml-0 underline underline-offset-4'>
             View our Hotels
-          </Link>
+          </LightLink>
         </div>
         <div className='opacity-100 transition-all ease-in-out duration-500 relative translate-x-0 max-w-[45%] hidden xl:flex'>
           <div className='relative w-96 h-96 dashboard-img-clip-path'>
@@ -60,12 +58,14 @@ export default function Home() {
         </div>
       </div>
       <CheckAvailability />
-      <Heading1 className='mt-8'>Our Bests Rooms</Heading1>
-      <div className='mt-4 flex flex-col lg:flex-row gap-6'>
+      <Heading1 className='mt-8 text-center xl:text-left'>
+        Our Bests Rooms
+      </Heading1>
+      <div className='mt-4 flex flex-col lg:flex-row gap-10'>
         {cards.map((props) => (
           <Card key={`hotel-card-${props.title}-${uuidV4()}`} {...props} />
         ))}
       </div>
-    </main>
+    </div>
   );
 }

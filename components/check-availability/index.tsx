@@ -27,8 +27,8 @@ const CheckAvailability = () => {
   return (
     <div className='relative z-10 w-full'>
       <div className='static max-w-7xl px-4 mx-auto'>
-        <form className='flex flex-wrap flex-col md:flex-row items-center w-full bg-slate-500 dark:bg-slate-800 shadow-lg mx-auto relative p-3 md:p-6 xl:p-8'>
-          <div className='relative pt-4 pb-3 w-full max-w-xs md:max-w-none md:w-4/5 bg-white dark:bg-gray-800 md:pr-auto'>
+        <form className='flex flex-wrap flex-col md:flex-row items-center w-full bg-slate-500 dark:bg-slate-800 shadow-lg mx-auto relative p-3 md:p-6 xl:p-8 rounded-md'>
+          <div className='relative pt-4 pb-3 w-full max-w-xs md:max-w-none md:w-4/5 bg-white dark:bg-gray-700 md:pr-auto rounded-t-md'>
             <ul className='flex flex-col md:flex-row gap-2 px-4'>
               <li className='md:w-1/4'>
                 <DateInput
@@ -48,7 +48,7 @@ const CheckAvailability = () => {
               </li>
             </ul>
           </div>
-          <button className='w-full max-w-xs md:max-w-none md:w-1/5 h-[70px] bg-slate-800 dark:bg-slate-500'>
+          <button className='w-full max-w-xs md:max-w-none md:w-1/5 h-[70px] bg-slate-800 dark:bg-slate-500 rounded-b-md'>
             Check Availability
           </button>
         </form>
