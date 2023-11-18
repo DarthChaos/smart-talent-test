@@ -18,10 +18,33 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+}
+
+@layer base {
+  body {
+    @apply bg-blue-300 dark:bg-slate-600;
+  }
+}
+
+@layer utilities {
+  .dashboard-img-clip-path {
+    -webkit-clip-path: polygon(
+      50% 0%,
+      100% 25%,
+      100% 75%,
+      50% 100%,
+      0% 75%,
+      0% 25%
+    );
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  body,
+  div,
+  input,
+  button,
+  a,
+  select {
+    @apply transform duration-200;
+  }
 }
