@@ -6,6 +6,7 @@ import Container from "@/layouts/container";
 import Footer from "@/layouts/footer";
 
 import "./globals.css";
+import ThemeProvider from "@/providers/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +23,11 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <Header />
-        <Container>{children}</Container>
-        <Footer />
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+          <Header />
+          <Container>{children}</Container>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -13,6 +13,7 @@ interface SelectorProps {
   className?: string;
   onChange: (val: string) => void;
   placeholder?: string;
+  defaultValue?: string;
 }
 
 interface TextInputProps {
