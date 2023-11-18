@@ -9,9 +9,9 @@ const CardDescriptiveSection = ({
     <div className='flex flex-col gap-2'>
       <div className='flex'>
         {img}
-        <h6 className='font-semibold'>{title}</h6>
+        <h6 className='font-semibold text-sm md:text-base'>{title}</h6>
       </div>
-      <p>{value}</p>
+      <p className='text-xs md:text-sm text-center'>{value}</p>
     </div>
   );
 };
