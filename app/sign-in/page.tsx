@@ -5,6 +5,7 @@ import { Heading3 } from "@/components/text";
 import TextInput from "@/components/text-input";
 import Link from "next/link";
 import React, { FormEvent } from "react";
+import { SignInProps } from "./sign-in";
 
 const SignIn = ({ isAdmin = false, adminSubmit }: SignInProps) => {
   const onLoginSubmit = (e: FormEvent) => {
