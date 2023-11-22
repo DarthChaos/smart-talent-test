@@ -4,6 +4,7 @@ import Accordion from "@/components/accordion";
 import { Heading2, Heading3 } from "@/components/text";
 import { useAppSelector } from "@/store/hooks";
 import React from "react";
+import { v4 as uuidV4 } from "uuid";
 
 const Reservations = () => {
   const { hotels } = useAppSelector(({ hotel }) => hotel);
@@ -17,7 +18,10 @@ const Reservations = () => {
             title: name,
             tagMessage: "Reserved",
             content: (
-              <section className='text-gray-900 dark:text-white px-6 py-4 border-l-[1px] border-r-[1px]'>
+              <section
+                key={`room-accordion-${uuidV4()}`}
+                className='text-gray-900 dark:text-white px-6 py-4 border-l-[1px] border-r-[1px]'
+              >
                 <div className='grid-cols-2 grid md:grid-cols-3 gap-3'>
                   <div className='col-span-2'>
                     <span className='font-semibold'>ID:</span> {room.room_id}
@@ -59,7 +63,10 @@ const Reservations = () => {
                             email,
                             emergency,
                           }) => (
-                            <div className='grid sm:grid-cols-2'>
+                            <div
+                              key={`room-reservation-item-${uuidV4()}`}
+                              className='grid sm:grid-cols-2'
+                            >
                               <div className='col-span-2'>
                                 <span className='font-semibold'>Name:</span>{" "}
                                 {`${name} ${surname}`}
@@ -118,7 +125,10 @@ const Reservations = () => {
         return {
           title: name,
           content: (
-            <div className='py-5 px-3 text-gray-900 dark:text-white'>
+            <div
+              key={`hotel-accordion-${uuidV4()}`}
+              className='py-5 px-3 text-gray-900 dark:text-white'
+            >
               <Heading3 className='col-span-3 mb-3'>Hotel Details</Heading3>
               <div className='border-t-2 border-b-2 grid-cols-2 grid md:grid-cols-3 py-4 px-6'>
                 <div className='col-span-2'>
