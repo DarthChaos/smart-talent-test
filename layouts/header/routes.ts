@@ -1,6 +1,8 @@
 const routes = [
-  { path: "/", name: "Home" },
-  { path: "/another", name: "Test" },
+  {
+    name: "Home",
+    path: "/",
+  },
 ];
 
 export default routes;
