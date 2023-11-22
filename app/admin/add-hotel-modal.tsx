@@ -43,6 +43,31 @@ const AddHotelModal = ({ isOpen, onClose, hotelId }: AddModalProps) => {
   const rooms =
     hotels?.find(({ hotel_id }) => hotel_id === hotelId)?.rooms || [];
 
+  const handleRoomChange = (
+    val: string,
+    col: keyof RoomManageDTO,
+    roomId: number,
+  ) => {
+    dispatch(
+      updateRoom({ hotel_id: hotelId, room: { room_id: roomId, [col]: val } }),
+    );
+  };
+  const handleHotelFormInputs = (
+    name: keyof HotelInterface,
+    value: string | number,
+  ) => {
+    dispatch(updateExistingHotel({ hotel_id: hotelId, [name]: value }));
+  };
+  const handleEditSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    onClose();
+  };
+  const handleAddRoomButton = () => {
+    setRoomName(false);
+    dispatch(addNewRoom({ hotel_id: hotelId }));
+  };
+
   const hotelData = {
     data: searchRooms || rooms,
     columns: React.useMemo<ColumnDef<RoomInterface>[]>(
@@ -133,33 +158,8 @@ const AddHotelModal = ({ isOpen, onClose, hotelId }: AddModalProps) => {
           header: "Reserved?",
         },
       ],
-      [ableSelectOpts],
+      [ableSelectOpts, handleRoomChange],
     ),
-  };
-
-  const handleRoomChange = (
-    val: string,
-    col: keyof RoomManageDTO,
-    roomId: number,
-  ) => {
-    dispatch(
-      updateRoom({ hotel_id: hotelId, room: { room_id: roomId, [col]: val } }),
-    );
-  };
-  const handleHotelFormInputs = (
-    name: keyof HotelInterface,
-    value: string | number,
-  ) => {
-    dispatch(updateExistingHotel({ hotel_id: hotelId, [name]: value }));
-  };
-  const handleEditSubmit = (e: FormEvent) => {
-    e.preventDefault();
-
-    onClose();
-  };
-  const handleAddRoomButton = () => {
-    setRoomName(false);
-    dispatch(addNewRoom({ hotel_id: hotelId }));
   };
 
   return (

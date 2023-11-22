@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { AccordionProps } from "./interfaces/accordion";
+import { v4 as uuidV4 } from "uuid";
 
 const Accordion = ({ accordions }: AccordionProps) => {
   const [openPos, setOpenPos] = useState<number>(0);
@@ -21,7 +22,7 @@ const Accordion = ({ accordions }: AccordionProps) => {
       data-accordion='open'
     >
       {accordions.map(({ content, title, isAble, tagMessage }, idx) => (
-        <>
+        <div key={`accordion-item-${uuidV4()}`}>
           <h2 id={`accordion-open-heading-${idx + 1}`}>
             <button
               type='button'
@@ -70,7 +71,7 @@ const Accordion = ({ accordions }: AccordionProps) => {
           >
             {content}
           </div>
-        </>
+        </div>
       ))}
     </div>
   );

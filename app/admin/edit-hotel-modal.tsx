@@ -47,6 +47,45 @@ const EditModal = ({ isOpen, onClose, originalValues }: EditModalProps) => {
     [],
   );
 
+  const handleRoomChange = (
+    val: string,
+    col: keyof RoomManageDTO,
+    roomId: number,
+  ) => {
+    dispatch(
+      updateRoom({
+        hotel_id: originalValues.hotel_id,
+        room: { room_id: roomId, [col]: val },
+      }),
+    );
+  };
+  const handleEditSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    onClose();
+  };
+  const handleHotelFormInputs = (
+    name: keyof HotelInterface,
+    value: string | number,
+  ) => {
+    dispatch(
+      updateExistingHotel({ hotel_id: originalValues.hotel_id, [name]: value }),
+    );
+  };
+  const onTableInputChange = (val: string) => {
+    dispatch(
+      textSearchRooms({ hotel_id: originalValues.hotel_id, search: val }),
+    );
+  };
+  const handleAddRoomButton = () => {
+    setRoomName(false);
+    dispatch(addNewRoom({ hotel_id: originalValues.hotel_id }));
+  };
+  const handleClose = () => {
+    if (!hasRoomName) toast("Values can't be empty", { type: "error" });
+    else onClose();
+  };
+
   const hotelData = {
     columns: React.useMemo<ColumnDef<TableDataObject>[]>(
       () => [
@@ -137,45 +176,6 @@ const EditModal = ({ isOpen, onClose, originalValues }: EditModalProps) => {
       ],
       [ableSelectOpts],
     ),
-  };
-
-  const handleRoomChange = (
-    val: string,
-    col: keyof RoomManageDTO,
-    roomId: number,
-  ) => {
-    dispatch(
-      updateRoom({
-        hotel_id: originalValues.hotel_id,
-        room: { room_id: roomId, [col]: val },
-      }),
-    );
-  };
-  const handleEditSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    onClose();
-  };
-  const handleHotelFormInputs = (
-    name: keyof HotelInterface,
-    value: string | number,
-  ) => {
-    dispatch(
-      updateExistingHotel({ hotel_id: originalValues.hotel_id, [name]: value }),
-    );
-  };
-  const onTableInputChange = (val: string) => {
-    dispatch(
-      textSearchRooms({ hotel_id: originalValues.hotel_id, search: val }),
-    );
-  };
-  const handleAddRoomButton = () => {
-    setRoomName(false);
-    dispatch(addNewRoom({ hotel_id: originalValues.hotel_id }));
-  };
-  const handleClose = () => {
-    if (!hasRoomName) toast("Values can't be empty", { type: "error" });
-    else onClose();
   };
 
   useEffect(() => {
