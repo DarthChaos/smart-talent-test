@@ -9,7 +9,7 @@ import React from "react";
 const SignUp = () => {
   return (
     <div className='mt-10 md:mt-20 p-8 border rounded-md bg-white dark:bg-gray-700'>
-      <form>
+      <form className='grid gap-y-6'>
         <div className='grid md:grid-cols-2 md:gap-6'>
           <TextInput
             type='text'
@@ -56,7 +56,7 @@ const SignUp = () => {
         </div>
         <div className='grid md:grid-cols-2 md:gap-6'>
           <div className='grid md:grid-cols-2 md:gap-6'>
-            <div className='max-h-[42px] mb-6'>
+            <div className='max-h-[42px]'>
               <DateInput
                 onChange={() => {}}
                 placeholder='Birth Date'
@@ -73,7 +73,7 @@ const SignUp = () => {
                 { value: "NB", label: "Not Binary" },
               ]}
               placeholder='Genre'
-              className='max-h-[42px] border-2 mb-6'
+              className='max-h-[42px] border-2'
             />
           </div>
           <TextInput
@@ -94,7 +94,7 @@ const SignUp = () => {
               { value: "FC", label: "Foreigner Card" },
             ]}
             placeholder='ID Type'
-            className='min-w-full max-h-[42px] border-2 col-span-2 md:col-span-1 mb-6'
+            className='min-w-full max-h-[42px] border-2 col-span-2 md:col-span-1'
           />
           <div className='col-span-2'>
             <TextInput

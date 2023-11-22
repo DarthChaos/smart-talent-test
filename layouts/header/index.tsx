@@ -9,6 +9,7 @@ import "./header.css";
 import DarkModeToggle from "./dark-mode-toggle";
 import { useState } from "react";
 import DarkLink from "@/components/dark-link";
+import SignInOut from "./sign-in-out";
 
 const Header = () => {
   const [isShowing, setMobileToggle] = useState(false);
@@ -60,6 +61,7 @@ const Header = () => {
             </ul>
           </nav>
           <DarkModeToggle />
+          {/* <SignInOut /> */}
           <DarkLink
             className='ml-4 mr-0 md:mx-6 text-xs md:text-sm px-2 py-4 md:px-4 md:py-4'
             href='/sign-in'

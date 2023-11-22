@@ -2,18 +2,10 @@ import { useTheme } from "next-themes";
 import React, { useEffect, useState } from "react";
 
 const DarkModeToggle = () => {
-  // const [isDark, setDark] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  // if (isDark) {
-  //   document.documentElement.classList.add("dark");
-  // } else {
-  //   document.documentElement.classList.remove("dark");
-  // }
-
   const toggleDarkMode = () => {
-    // setDark((prevDark) => !prevDark);
     setTheme(theme === "dark" ? "light" : "dark");
   };
 

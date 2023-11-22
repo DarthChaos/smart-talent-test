@@ -7,6 +7,11 @@ import Footer from "@/layouts/footer";
 
 import "./globals.css";
 import ThemeProvider from "@/providers/theme-provider";
+import ReduxProvider from "@/providers/redux-provider";
+import AadProvider from "@/providers/aad-provider";
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,9 +29,15 @@ export default function RootLayout({
     <html lang='en'>
       <body className={inter.className}>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-          <Header />
-          <Container>{children}</Container>
-          <Footer />
+          <div id='modal-portal' className='w-screen h-screen fixed' />
+          <AadProvider>
+            <ReduxProvider>
+              <Header />
+              <ToastContainer />
+              <Container>{children}</Container>
+              <Footer />
+            </ReduxProvider>
+          </AadProvider>
         </ThemeProvider>
       </body>
     </html>
