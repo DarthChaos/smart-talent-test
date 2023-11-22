@@ -1,4 +1,4 @@
-export interface SignInProps {
+interface SignInProps {
   isAdmin?: boolean;
   adminSubmit?: (e: any) => void;
 }
