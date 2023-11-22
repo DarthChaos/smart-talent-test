@@ -1,18 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import routes from "./routes";
+import userRoutes from "./user.routes";
+import adminRoutes from "./admin.routes";
+import unprotectedRoutes from "./routes";
 import { v4 as uuidV4 } from "uuid";
 import HeaderItem from "./header-item";
 
 import "./header.css";
 import DarkModeToggle from "./dark-mode-toggle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DarkLink from "@/components/dark-link";
-import SignInOut from "./sign-in-out";
+// import SignInOut from "./sign-in-out";
+import { useAppSelector } from "@/store/hooks";
 
 const Header = () => {
   const [isShowing, setMobileToggle] = useState(false);
+  const [routes, setRoutes] = useState<{ name: string; path: string }[] | null>(
+    null,
+  );
+  const { activeUser } = useAppSelector(({ auth }) => auth);
 
   const mobileMenuClassName = `xl:hidden w-full ${
     !isShowing ? "hidden" : "inline-block"
@@ -21,6 +28,16 @@ const Header = () => {
   const onHamburgerClick = () => {
     setMobileToggle((prevToggle) => !prevToggle);
   };
+
+  useEffect(() => {
+    setRoutes(
+      !activeUser
+        ? unprotectedRoutes
+        : activeUser.role === "ADMIN"
+        ? adminRoutes
+        : userRoutes,
+    );
+  }, []);
 
   return (
     <header className='fixed top-0 left-0 right-0 bg-white dark:bg-gray-800 px-4 xl:px-0 py-4 z-50 shadow'>
@@ -55,9 +72,14 @@ const Header = () => {
         <div className='flex'>
           <nav className='hidden xl:flex flex-wrap ml-auto -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400'>
             <ul className='flex flex-wrap -mb-px'>
-              {routes.map((props) => (
-                <HeaderItem key={"item-" + uuidV4()} {...props} />
-              ))}
+              {routes &&
+                routes.map((props) => (
+                  <HeaderItem
+                    key={"item-" + uuidV4()}
+                    role={activeUser?.role}
+                    {...props}
+                  />
+                ))}
             </ul>
           </nav>
           <DarkModeToggle />
@@ -72,7 +94,7 @@ const Header = () => {
       </div>
       <nav className={mobileMenuClassName}>
         <ul className='flex flex-col flex-wrap my-3 w-full mx-auto'>
-          {routes.map((props) => (
+          {userRoutes.map((props) => (
             <HeaderItem key={"item-" + uuidV4()} {...props} />
           ))}
         </ul>

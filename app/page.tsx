@@ -57,11 +57,11 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <CheckAvailability />
+      {/* <CheckAvailability /> */}
       <Heading1 className='mt-8 text-center xl:text-left'>
         Our Bests Rooms
       </Heading1>
-      <div className='mt-4 flex flex-col lg:flex-row gap-10 w-full items-center'>
+      <div className='mt-4 flex flex-col lg:flex-row gap-10 w-full items-center justify-center'>
         {cards.map((props) => (
           <Card key={`hotel-card-${props.title}-${uuidV4()}`} {...props} />
         ))}
