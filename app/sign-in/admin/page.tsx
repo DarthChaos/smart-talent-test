@@ -1,12 +1,12 @@
 import React from "react";
-import SignIn from "../page";
+import SignInForm from "../sign-in-form";
 
 const AdminSignIn = () => {
   const onAdminSubmit = (e: any) => {
     console.log(e);
   };
 
-  return <SignIn isAdmin />;
+  return <SignInForm isAdmin adminSubmit={onAdminSubmit} />;
 };
 
 export default AdminSignIn;
