@@ -11,7 +11,7 @@ import {
   updateRoom,
 } from "@/store/hotel-slice";
 import { ColumnDef } from "@tanstack/react-table";
-import React, { FormEvent, useMemo, useState } from "react";
+import React, { FormEvent, useCallback, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 
 interface AddModalProps {
@@ -43,15 +43,17 @@ const AddHotelModal = ({ isOpen, onClose, hotelId }: AddModalProps) => {
   const rooms =
     hotels?.find(({ hotel_id }) => hotel_id === hotelId)?.rooms || [];
 
-  const handleRoomChange = (
-    val: string,
-    col: keyof RoomManageDTO,
-    roomId: number,
-  ) => {
-    dispatch(
-      updateRoom({ hotel_id: hotelId, room: { room_id: roomId, [col]: val } }),
-    );
-  };
+  const handleRoomChange = useCallback(
+    (val: string, col: keyof RoomManageDTO, roomId: number) => {
+      dispatch(
+        updateRoom({
+          hotel_id: hotelId,
+          room: { room_id: roomId, [col]: val },
+        }),
+      );
+    },
+    [],
+  );
   const handleHotelFormInputs = (
     name: keyof HotelInterface,
     value: string | number,
