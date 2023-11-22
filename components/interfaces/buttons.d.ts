@@ -9,4 +9,5 @@ interface ButtonProps {
   children: string | React.ReactNode;
   className?: string;
   onClick?: () => void;
+  disabled?: boolean;
 }
