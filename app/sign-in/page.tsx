@@ -21,7 +21,7 @@ const SignIn = ({ isAdmin, adminSubmit }: SignInProps) => {
       <Heading3 className='text-gray-900 mb-4 text-center'>
         {`Welcome Again${isAdmin ? ", Admin!" : "!"}`}
       </Heading3>
-      <form className='flex flex-col gap-y-4' onSubmit={onLoginSubmit}>
+      <form className='flex flex-col gap-y-6' onSubmit={onLoginSubmit}>
         <TextInput
           type='email'
           name='floating_email'

@@ -18,8 +18,7 @@ export const Heading2 = ({ children, className }: TextProps) => {
 
 export const Heading3 = ({ children, className }: TextProps) => {
   const headingClassName =
-    "text-xl md:text-3xl font-semibold text-gray-900 dark:text-white " +
-    className;
+    "text-xl font-semibold text-gray-900 dark:text-white " + className;
 
   return <h2 className={headingClassName}>{children}</h2>;
 };
