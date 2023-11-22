@@ -6,7 +6,7 @@ import TextInput from "@/components/text-input";
 import Link from "next/link";
 import React, { FormEvent } from "react";
 
-const SignIn = ({ isAdmin, adminSubmit }: SignInProps) => {
+const SignIn = ({ isAdmin = false, adminSubmit }: SignInProps) => {
   const onLoginSubmit = (e: FormEvent) => {
     if (isAdmin && adminSubmit) adminSubmit(e);
     else console.log(e);
