@@ -1,3 +1,5 @@
+"use client";
+
 import LightButton from "@/components/light-button";
 import { Heading3 } from "@/components/text";
 import TextInput from "@/components/text-input";
