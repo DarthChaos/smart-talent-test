@@ -15,7 +15,13 @@ import {
   updateRoom,
 } from "@/store/hotel-slice";
 import { ColumnDef } from "@tanstack/react-table";
-import React, { FormEvent, useEffect, useMemo, useState } from "react";
+import React, {
+  FormEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { toast } from "react-toastify";
 
 interface EditModalProps {
@@ -47,18 +53,17 @@ const EditModal = ({ isOpen, onClose, originalValues }: EditModalProps) => {
     [],
   );
 
-  const handleRoomChange = (
-    val: string,
-    col: keyof RoomManageDTO,
-    roomId: number,
-  ) => {
-    dispatch(
-      updateRoom({
-        hotel_id: originalValues.hotel_id,
-        room: { room_id: roomId, [col]: val },
-      }),
-    );
-  };
+  const handleRoomChange = useCallback(
+    (val: string, col: keyof RoomManageDTO, roomId: number) => {
+      dispatch(
+        updateRoom({
+          hotel_id: originalValues.hotel_id,
+          room: { room_id: roomId, [col]: val },
+        }),
+      );
+    },
+    [],
+  );
   const handleEditSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -174,7 +179,7 @@ const EditModal = ({ isOpen, onClose, originalValues }: EditModalProps) => {
           header: "Reserved?",
         },
       ],
-      [ableSelectOpts],
+      [ableSelectOpts, handleRoomChange, originalValues.hotel_id],
     ),
   };
 
