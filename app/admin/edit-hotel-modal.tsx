@@ -190,7 +190,7 @@ const EditModal = ({ isOpen, onClose, originalValues }: EditModalProps) => {
         ?.rooms || [];
 
     setTimeout(() => {
-      setData(rooms);
+      setData(searchRooms || rooms);
     }, 10);
   }, [hotels]);
 
